@@ -1,0 +1,343 @@
+/*
+    
+    MLA  test - оформление страницы
+
+*/
+
+body {
+  display: flex; 
+  color: #222;
+  font: 18px/25px  Arial;
+  display: block; 
+  background-color: #fdfdfd;
+  margin: 0;
+  word-wrap: anywhere;
+  word-break: break-word;
+}
+
+#mla {
+  display: block; 
+  width: 1374px;
+  margin: auto;
+
+}
+
+#mla #bot,
+#mla #show_zone {
+  display: block; 
+  background-color: #fff;   
+  border: 2px solid #fff;
+}
+
+#mla #header{
+  display: flex;
+  height: 111px;
+  padding-top: 22px;
+}
+
+#mla #header div.pole_find{
+  display: inline-flex;
+  align-content: stretch;
+  font-size: 31px;
+  height: 50px;
+  width: 37.0em;
+  top: 3em;
+  margin: auto;
+  padding-left: 1em;
+  border: 2px solid #e9f2f4;
+  border-radius:    	   2.2em;
+  -webkit-border-radius:   2.2em;  
+  cursor: pointer;  
+}
+
+#mla #header input.find{
+  display: inline-block;
+  width: 38.8em;
+  font-size: 28px;
+  color: #333;
+  outline: none;
+  border: 1px solid #fff;  
+}
+#mla #header input.find:focus{
+  outline: none;
+  border: 1px solid #fff; 
+}
+
+#mla #header span.find_button{
+  display: inline-block;
+  width: 1.1em;
+  background: url('pict/find.png') no-repeat center center #fff;
+}
+/* */
+
+#mla #work_zone {
+  display: inline-flex; 
+  flex-flow: wrap;
+  background-color: #fff; 
+  overflow: auto;
+  margin-left: 5.5em;
+  padding-bottom: 22px;
+  z-index: 1;
+}
+
+#mla #work_zone div {
+  display: block; 
+  background-color: #fff;     
+}
+
+#mla  #work_zone .person {
+  display: block; 
+  width:  371px;
+  height: 314px;
+  margin: 9px 11px 9px 9px;
+  padding: 0px;
+  border: 1px solid #fff;
+  border-radius:       18px;
+  -webkit-border-radius:  18px;
+  box-shadow:      14px 14px 22px 0px #eee;
+  -webkit-box-shadow: 14px 14px 22px 0px #eee;
+  cursor: pointer;
+}
+
+#mla  #work_zone .person div {
+  width: 15em;
+  height: 27px;
+  margin:  21px 0 0 21px;
+}
+  
+#mla  #work_zone .person a,
+#mla  #work_zone .person span {
+  display: block; 
+  height: 1em;
+  color: #999;
+}
+
+#mla  #work_zone .person div.name {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 38px 0 40px 24px;
+}
+
+#mla  #work_zone .person span.phone {
+  margin-left: 34px;
+}
+
+#mla  #work_zone .person a.email {
+  margin-left: 36px;
+  font-size: 16px;
+  color: #999;
+}
+
+
+#mla  #work_zone .person div.phone {
+  background: url('pict/phone.png') no-repeat top left #fff;
+}
+
+#mla  #work_zone .person div.email {
+  background: url('pict/mail.png') no-repeat left #fff;
+}
+
+
+#mla #show_zone {
+  display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;  
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0.5em;
+  background: rgba( 156, 184, 199, 68%);
+  background-color: rgba( 156, 184, 199, 68%);
+  overflow: hidden;
+  z-index: 11;
+}
+
+#mla #show_zone.show {
+  display: block; 
+}
+
+#mla #show_zone #text_zone {
+  display: block; 
+  position: absolute;
+  background-color: #fff; 
+  top: 5.5em;
+  left: calc(50% - 18.0em);  
+  width: 31em;
+  height: 24.5em;
+  margin: 1.5em;
+  padding: 0.5em;
+  border: 2px solid #eee;
+  border-radius:       1em;
+  -webkit-border-radius:   1em;
+  cursor: pointer;
+}
+
+
+#mla #show_zone #text_zone button.close {
+  display: flex; 
+  position: absolute;
+  color: #fff;
+  background-color: #b44ccf;
+  top: -25px;
+  left: calc(50% - 23px);  
+  width: 46px;
+  height: 46px;
+  border: 0px solid #eee;
+  border-radius:       23px;
+  -webkit-border-radius:   23px;  
+  cursor: pointer;  
+}
+
+#mla #show_zone #text_zone .close  span{
+  margin: auto;
+  font-size: 22px;
+  color: #fff;
+}
+
+#mla  #show_zone #text_zone div {
+  display: block; 
+  margin: 0 0 13px 0.5em;
+}
+
+#mla  #show_zone #text_zone span {
+  display: inline-block; 
+  margin: 0;
+  color: #999;
+}
+
+#mla #show_zone #text_zone span.name {
+  font-size: 33px;
+  font-weight: bold;
+  color: #333;
+  margin: 34px 0 39px 3px;
+}  
+
+#mla  #show_zone #text_zone span.titl {
+  color: #333;
+  width: 13em;
+}
+
+#mla  #show_zone #text_zone span.titl.add_info {
+  width: 17em;
+  margin-top: 28px;
+}
+
+#mla  #show_zone #text_zone span.cut {
+  width: 21em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+
+#mla  #show_zone #text_zone a.email,
+#mla  #show_zone #text_zone span.position_name,
+#mla  #show_zone #text_zone span.department {
+  font-size: 14px;
+  line-height: 19px;  
+}
+
+#mla  #show_zone #text_zone span.hire_date {
+  font-size: 16px;  
+}
+
+#mla  #show_zone #text_zone a.email{
+  color: #999;  
+}  
+  
+#mla  #show_zone #text_zone div.address {
+  width: 37em;
+  font-size: 14px;
+  color: #999;
+  line-height: 18px;
+  margin-top: -6px;
+  height: 3em;
+  overflow: auto;
+}
+
+
+
+
+
+/*   анимация на время загрузки данных          */
+
+#showLoad {
+  display: block; 
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background: #fff; 
+  z-index: 111;
+}
+
+#showLoad.hide {
+  display: none;
+}
+
+.loader {
+  position: absolute;
+  top:   calc(50% - 12%);
+  left: calc(50% - 12%);
+  width:  24%;
+  height: 24%;
+  color: #333;
+  font-size:   84px;
+  border-radius: 50%;
+  perspective: 800px;
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 80%;  
+  left: 0;
+  top:  0;
+}
+
+.inner.one {
+  animation: rotate-one 4s linear infinite;
+  border-bottom: 13px solid #F77;
+}
+
+.inner.two {
+  animation: rotate-two 6s linear infinite;
+  border-right: 23px solid #7F7;
+}
+
+.inner.three {
+  animation: rotate-three 8s linear infinite;
+  border-top: 33px solid #77F;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+*/
