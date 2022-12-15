@@ -56,7 +56,11 @@ $(document).ready(function(){
 		};
 	});
 
-
-
+	// 106 переход по страницам
+	$('#mla #bot').on( 'click', '.p_p',function(e){
+		t.cl(' 106 переход на следующую страницу ');
+		t.cl(this.title);
+		t.page_go( this.title )
+	});
 
 });
