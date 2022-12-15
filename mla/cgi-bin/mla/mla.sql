@@ -96,3 +96,10 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+запросы на очисmку mаблиц и "сброс" данных файла maillog
+
+truncate table log;
+truncate table message;
+update file_attr set size = 1, ctime = 2, mtime = 3, atime = 4 where id=0;
+

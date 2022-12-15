@@ -46,6 +46,8 @@ body {
 
 #mla #bot div {
   display: inline-block;
+  font-size: 1.1em;
+  font-weight: bold;
   margin: auto;
   border: 2px solid #555;
   padding: 3px 11px;
@@ -57,6 +59,10 @@ body {
   cursor: pointer;
   box-shadow:      	  3px 3px 9px 3px #ccc;
   -webkit-box-shadow: 3px 3px 9px 3px #ccc;
+}
+
+#mla #bot div.p_p:hover {
+	color: #34b;
 }
 
 #mla #bot,
@@ -114,11 +120,13 @@ body {
 #mla #work_zone {
   display: block; 
   flex-flow: wrap;
+  border-top: 2px solid #999;
+  border-bottom: 2px solid #999;
  /* background-color: #fff;  */
   overflow: auto;
-  margin-left: 2.2em;
-  margin-right: 1.2em;
-  padding-bottom: 22px;
+  margin-left: 2px;
+  margin-right: 5px;
+  padding: 2px 2px 22px 33px;
   z-index: 11;
 }
 
@@ -131,6 +139,7 @@ body {
   display: block; 
   margin:  7px 12px 5px 4px;
   padding: 11px;
+  padding-left: 33px;
   border: 0px solid #fff;
   border-radius:       3px;
   -webkit-border-radius:  3px;
@@ -200,7 +209,7 @@ body {
   display: flex; 
   position: absolute;
   color: #fff;
-  background-color: #b44ccf;
+  background-color: #34b;
   top: -25px;
   left: calc(50% - 23px);  
   width: 46px;

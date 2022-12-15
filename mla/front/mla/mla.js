@@ -1,5 +1,5 @@
 /*
-*		mla - mail log analysis  - "основной" функционал 
+*		mla.js - mail log analysis  - "основной" функционал 
 *
 */
 
@@ -107,30 +107,28 @@ MLA = {
 	page_go( page ) {
 		let t = this;
 		t.cl( 'page_go: '+ page );
-		if ( page > 0 ){
+		if ( ( page > 0 ) && ( page < t.X_length/t.X_lim )  ){
 			t.X_page =  page ;
-			t.decorate( t.X.length, t.X );	//  передача ответа на оформление			
+			t.decorate( );	//  передача ответа на оформление			
 		}	
 	},
 
 	//  decorate( ) - обределение варианта оформления полученного набора записей
-	//   X_length  	-  количество записей
-	//   X  		-  набор записей
 	decorate( ){  
 		let t = this;
-		let templ = '';				//  templ 	-  шаблон оформления
-		let X = t.X;				//	набор записей
-		let X_length = t.X_length ;	//	количество записей
-		let X_lim = t.X_lim ;		//	ограничение на вывод результата
-		let line_first = 1;
-		let line_end   = 1;
+		let templ = '';				// шаблон оформления
+		let X = t.X;				// набор записей
+		let X_length = t.X_length ;	// количество полученных записей
+		let X_lim = t.X_lim ;		// ограничение на вывод результата
+		let line_first = 1;			// первая запись на странице 
+		let line_end   = 1;			// последняя запись на странице 
 
 		t.cl( 'decorate::X: ' ); 
 		t.cl( X );
 		var x = out = ''  ;
 
 			t.cl( 'decorate::объем ответа: ' + X_length );
-			if(  X_length > 1 ) {	// если в данных много персон - передаем на оформление по одной
+			if(  X_length > 1 ) {	// если много записей, то передаем на оформление по одной
 				templ = t.templ_all ;
 				if ( X_length < X_lim ) { 
 					X_lim = X_length; 			// ограничение показываемого списка
@@ -139,10 +137,11 @@ MLA = {
 				t.cl( 'decorate:: шаблон оформления: '+ templ +' ' ); 
 				if( !!templ ){ 			// проверка на наличие шаблона оформления
 					$('#work_zone').empty();					// зачистка work_zone
-					line_first = (t.X_page - 1) * t.X_lim + 1 ;		// первая запись
-					line_end   = t.X_page * t.X_lim ;				// последняя запись
-					for( let i = line_first; i <= line_end; i++ ) {	// перебор записей 
-						let x = X[i] ;
+					line_first = (t.X_page - 1) * t.X_lim + 1 ;			// первая запись
+					line_end   = t.X_page * t.X_lim ;					// последняя расчетная запись
+					if ( line_end > X_length) { line_end = X_length  }	// правка количества циклов
+					for( let i = line_first; i <= line_end; i++ ) {		// перебор записей 
+						let x = X[i] ;							// текущая запись	
 						if( typeof( x ) == "object" ) {			// если имеем 'object'
 							t.cl( 'decorate: -> [object] - передаем на оформление ' );
 							out = t.decorate_one( x, templ );	// переход на оформление элемента
@@ -151,6 +150,9 @@ MLA = {
 						$('#work_zone').append( out );			// список элементов размещается в work_zone
 					};
 				};
+				t.cl('page:: '+t.X_page+' ferst line:'+line_first+' end line: '+line_end );	// перебор записей 
+				t.pagination( X_lim, X_length, line_first, line_end ); // обработка "постраничности"
+
 			} else if(  X_length == 1 ) {	 // если в данных один ответ - передаем вывод в show_one
 				t.show_one( X[0] );				
 			} else if(  X_length == 0 ) {	 // если в данных 0 - очищаем поля
@@ -160,8 +162,6 @@ MLA = {
 			} else {
 				t.cl( "Ошибка обработки данных в decorate");
 			};	
-			t.cl('page:: '+t.X_page+' ferst line:'+line_first+' end line: '+line_end );	// перебор записей 
-			t.pagination( X_lim, X_length, line_first, line_end ); // обработка "постраничности"
 		return X ;	
 	},
 
@@ -201,13 +201,14 @@ MLA = {
 			t.ShowLoad( -1 );
 			alert( 'Ошибка: ответ сервера не является объектом!' ); //	ой! - ответ не объект!
 		} else {
-			t.X_length = X_bD.it.length ; 	//	
-			t.cl( 'найдено всего: ' + t.X_length ); 	//	
-			t.cl( 'getting::' ); 	t.cl( X_bD.result ); 			//	
-			t.X_bD = X_bD;
-			t.X = X_bD.result;
-			t.decorate( );				//  передача ответа на оформление
-			t.ShowLoad( -1 );
+			t.X_page = 1;								 // возврат на первую страницу
+			t.X_length = X_bD.it.length ; 				 //	"выношу" длинну ответа в общее пространство
+			t.cl( 'найдено всего: ' + t.X_length ); 	 //	тестовая печать в консоль
+			t.cl( 'getting::' ); 	t.cl( X_bD.result ); //	тестовая печать в консоль
+			t.X_bD = X_bD;								 // "выношу" весь ответ в общее пространство
+			t.X = X_bD.result;							 // "выношу" целевой результат в общее пространство
+			t.decorate( );								 // передача процесса на оформление
+			t.ShowLoad( -1 );							 //
 			return  X_bD.result;
 		};
 	},	//  getting получение и обработка ответа сервера
