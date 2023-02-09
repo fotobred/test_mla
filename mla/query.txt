@@ -1,21 +1,4 @@
-
-
-created	int_id	str	address 	
-2022-12-09 10:14:23 	111111 	strstrstrstrstrstrstrstrstrstr 	addressaddressaddre
-
-"UPDATE log SET str = 'str str str str str str str str str str' 
-WHERE 
-created = '2022-12-09 10:14:23' AND int_id = '111111' AND address = 'addressaddressaddre' ";
-
-
-UPDATE log SET str = 'str strstr str strstr strstr strstr' WHERE created = '2022-12-09 10:14:23' AND int_id = '111111' AND address = 'addressaddressaddre' 
-
-
-INSERT IGNORE INTO log SET str = 'str str str str str str str str str str' ,
-created = '2022-12-09 10:14:23', int_id = '111111', address = 'addressaddressaddre'
-ON DUPLICATE KEY UPDATE created = '2022-12-09 10:14:23', int_id = '111111', address = 'addressaddressaddre'
-
-
+"очистка" логов в базе
 
 truncate table log;
 truncate table message;
